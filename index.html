@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bool — Brand Directions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --o: #C47A00; --bone: #F2EDE4; --black: #0A0A0A; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--black); color: var(--bone); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; padding: 0 40px; height: 54px;
+            background: rgba(10,10,10,0.96); border-bottom: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+        }
+        .nav-brand { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,228,0.3); margin-right: auto; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,228,0.38); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--bone); }
+
+        /* GLOW RING */
+        .ring {
+            border-radius: 50%; border: 1.5px solid var(--o); background: transparent; flex-shrink: 0;
+            box-shadow: 0 0 8px rgba(196,122,0,0.9), 0 0 20px rgba(196,122,0,0.4), 0 0 50px rgba(196,122,0,0.15);
+        }
+        .ring-sm { width: 22px; height: 22px; }
+        .ring-md { width: 44px; height: 44px; }
+        .ring-lg { width: 80px; height: 80px; box-shadow: 0 0 14px rgba(196,122,0,1), 0 0 40px rgba(196,122,0,0.55), 0 0 90px rgba(196,122,0,0.2); }
+
+        /* LAYOUT */
+        .page { padding-top: 54px; }
+        .section { padding: 72px 56px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .section:first-of-type { border-top: none; }
+        .label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(242,237,228,0.28); }
+
+        /* HERO */
+        .hero { padding: 80px 40px 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+        .hero-title { font-size: clamp(44px, 7vw, 84px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.96; }
+        .hero-title span { color: var(--o); }
+        .hero-sub { font-size: 15px; color: rgba(242,237,228,0.45); margin-top: 16px; line-height: 1.6; max-width: 480px; }
+        .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+        .pill { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); color: rgba(242,237,228,0.36); }
+        .pill-o { border-color: rgba(196,122,0,0.45); color: var(--o); }
+
+        /* RENDER IMAGES */
+        .render-block { margin: 0; page-break-inside: avoid; break-inside: avoid; }
+        .render-img {
+            width: 100%; display: block; border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            padding: 0;
+        }
+        .render-caption { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 0 4px 8px; }
+        .render-title { font-size: 12px; font-weight: 600; color: rgba(242,237,228,0.7); }
+        .render-desc { font-size: 11px; color: rgba(242,237,228,0.35); margin-left: auto; }
+
+        .render-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+        /* NAME CARDS */
+        .names-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+        .name-card {
+            padding: 28px 24px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .name-card-num { font-size: 10px; letter-spacing: 0.2em; color: rgba(242,237,228,0.22); }
+        .name-card-name { font-size: clamp(22px, 3vw, 32px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+        .name-card-hook { font-size: 12px; color: rgba(242,237,228,0.5); line-height: 1.5; }
+        .name-card-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--o); margin-top: auto; }
+        .name-card.lucid   { border-top: 2px solid var(--o); }
+        .name-card.comeback { border-top: 2px solid #E07500; }
+        .name-card.keen    { border-top: 2px solid rgba(196,122,0,0.5); }
+        .name-card.bool    { border-top: 2px solid rgba(196,122,0,0.3); }
+
+        /* DEVICE SECTION */
+        .device { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
+        .device-ring-wrap { display: flex; align-items: center; justify-content: center; height: 200px; position: relative; }
+        .device-ring-wrap::before {
+            content: ''; position: absolute; width: 160px; height: 160px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(196,122,0,0.07) 0%, transparent 70%);
+        }
+        .device-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .device-text p { font-size: 14px; line-height: 1.75; color: rgba(242,237,228,0.55); max-width: 560px; }
+        .device-stats { display: flex; gap: 32px; margin-top: 24px; }
+        .stat-num { font-size: 28px; font-weight: 800; color: var(--o); }
+        .stat-label { font-size: 11px; color: rgba(242,237,228,0.4); margin-top: 2px; }
+
+        /* COMPARE TABLE */
+        .compare-wrap { overflow-x: auto; margin-top: 36px; }
+        table { width: 100%; border-collapse: collapse; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; font-size: 12px; }
+        th { padding: 14px 18px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; background: rgba(255,255,255,0.02); text-align: left; }
+        th.l { border-top: 2px solid var(--o); color: var(--o); }
+        th.c { border-top: 2px solid #E07500; color: #E07500; }
+        th.k { border-top: 2px solid rgba(196,122,0,0.55); color: rgba(196,122,0,0.8); }
+        th.b { border-top: 2px solid rgba(196,122,0,0.3); color: rgba(196,122,0,0.55); }
+        td { padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04); color: rgba(242,237,228,0.6); line-height: 1.5; vertical-align: top; }
+        td.row-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,228,0.25); background: rgba(255,255,255,0.01); }
+
+        /* PRINT */
+        @media print {
+            .nav { display: none; }
+            .page { padding-top: 0; }
+            .section { padding: 48px 56px; }
+            .render-block { page-break-inside: avoid; break-inside: avoid; margin-bottom: 8px; }
+            .render-grid-2 { gap: 24px; }
+            body { background: #0A0A0A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        /* FOOTER */
+        .footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; align-items: center; }
+        .footer-text { font-size: 11px; letter-spacing: 0.1em; color: rgba(242,237,228,0.16); }
+
+        @media (max-width: 800px) {
+            .names-grid { grid-template-columns: 1fr 1fr; }
+            .device { grid-template-columns: 1fr; }
+            .render-grid-2 { grid-template-columns: 1fr; }
+            .hero { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <span class="nav-brand">Bool — Brand Directions · June 2026</span>
+    <div class="nav-links">
+        <a href="#names">Names</a>
+        <a href="#renders">Renders</a>
+        <a href="#device">Device</a>
+        <a href="#compare">Compare</a>
+    </div>
+</nav>
+
+<div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+        <div>
+            <div class="label" style="margin-bottom:16px;">Branding exploration</div>
+            <div class="hero-title"><span>High output</span><br>hydration.</div>
+            <div class="hero-sub">Four naming directions. Three visual territories. The product is genuinely different — nootropic-grade electrolyte, Netherlands formula, 88 iterations. The brand just hasn't caught up yet.</div>
+            <div class="hero-pills">
+                <div class="pill pill-o">High output hydration</div>
+                <div class="pill">Nootropic wedge</div>
+                <div class="pill">50/50 M/F</div>
+                <div class="pill">Premium · not discount</div>
+                <div class="pill">No mascot</div>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; padding: 20px 40px;">
+            <div style="position:relative; width:100px; height:100px; display:flex; align-items:center; justify-content:center;">
+                <div style="position:absolute; width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, rgba(196,122,0,0.06) 0%, transparent 70%);"></div>
+                <div class="ring ring-lg"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAME CARDS -->
+    <div class="section" id="names">
+        <div class="label">Four naming directions</div>
+        <div class="names-grid">
+            <div class="name-card lucid">
+                <div class="name-card-num">01</div>
+                <div class="name-card-name" style="font-family:'Inter';">Lucid</div>
+                <div class="name-card-hook">Hydration that makes you sharper. Every other electrolyte talks about sweat. This one talks about your brain.</div>
+                <div class="name-card-tag">Focus · Clarity · Cognition</div>
+            </div>
+            <div class="name-card comeback">
+                <div class="name-card-num">02</div>
+                <div class="name-card-name" style="font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:0.02em; color:#E07500;">Comeback</div>
+                <div class="name-card-hook">"Comeback mode" is already what he calls the PM SKU. This just makes it the whole brand. Back to 100, every time.</div>
+                <div class="name-card-tag">Rebound · Reset · Return</div>
+            </div>
+            <div class="name-card keen">
+                <div class="name-card-num">03</div>
+                <div class="name-card-name" style="font-family:'Plus Jakarta Sans';">keen</div>
+                <div class="name-card-hook">The sharp electrolyte. Most restrained of the four. Works hardest when the copy does the heavy lifting.</div>
+                <div class="name-card-tag">Edge · Precision · Performance</div>
+            </div>
+            <div class="name-card bool">
+                <div class="name-card-num">04</div>
+                <div class="name-card-name" style="font-family:'Inter';">bool</div>
+                <div class="name-card-hook">Keep the name, overhaul everything else. The @boolsalts handle stays. The smiley goes. "High output hydration."</div>
+                <div class="name-card-tag">Focus · Performance · Hydration</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RENDERS -->
+    <div class="section" id="renders">
+        <div class="label">Renders</div>
+
+        <!-- Full-width product hero -->
+        <div class="render-block" style="margin-top:36px;">
+            <img class="render-img" src="renders/render-product-hero.png" alt="Product renders — Lucid, Comeback, Keen">
+            <div class="render-caption">
+                <div class="ring ring-sm"></div>
+                <div class="render-title">Product — Lucid / Comeback / Keen</div>
+                <div class="render-desc">Box + stick pack</div>
+            </div>
+        </div>
+
+        <!-- Solar ring matrix — full width, star of the show -->
+        <div class="render-block" style="margin-top:44px;">
+            <img class="render-img" src="renders/render-solar-matrix.png" alt="Solar ring matrix — A Optics/Focus · B Neurotech/Science · C Luxury/Ritual">
+            <div class="render-caption">
+                <div class="ring ring-sm"></div>
+                <div class="render-title">All four names × three territories</div>
+                <div class="render-desc">A. Optics/Focus · B. Neurotech/Science · C. Luxury/Ritual</div>
+            </div>
+        </div>
+
+        <!-- Execution matrix + progression side by side -->
+        <div class="render-grid-2" style="margin-top:44px;">
+            <div class="render-block">
+                <img class="render-img" src="renders/render-execution-matrix.png" alt="Minimal / Technical / Bold execution matrix">
+                <div class="render-caption">
+                    <div class="render-title">Execution range</div>
+                    <div class="render-desc">Minimal · Technical · Bold</div>
+                </div>
+            </div>
+            <div class="render-block">
+                <img class="render-img" src="renders/render-progression.png" alt="50% / 100% / 200% better progression">
+                <div class="render-caption">
+                    <div class="render-title">Direction spectrum</div>
+                    <div class="render-desc">50% · 100% · 200% better</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AB matrix + Lucid formats side by side -->
+        <div class="render-grid-2" style="margin-top:44px;">
+            <div class="render-block">
+                <img class="render-img" src="renders/render-ab-matrix.png" alt="A/B/C territory matrix">
+                <div class="render-caption">
+                    <div class="render-title">Territory matrix</div>
+                    <div class="render-desc">Optics · Neurotech · Luxury</div>
+                </div>
+            </div>
+            <div class="render-block">
+                <img class="render-img" src="renders/render-lucid-formats.png" alt="Lucid packaging system — 10 formats">
+                <div class="render-caption">
+                    <div class="render-title">Lucid packaging system</div>
+                    <div class="render-desc">10 formats — stick to canister</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE DEVICE -->
+    <div class="section" id="device">
+        <div class="label">The mark</div>
+        <div class="device" style="margin-top:36px;">
+            <div class="device-ring-wrap">
+                <div class="ring ring-lg"></div>
+            </div>
+            <div class="device-text">
+                <h3>The mark earns its place. It's not decoration.</h3>
+                <p>L-Theanine + Alpha GPC drives alpha-wave brain activity — the calm, locked-in state between anxious and flat. That's what the ring represents: the moment focus lands. Every competitor uses straight lines and white space. A glowing ring tied to actual neuroscience is different. It's also just better looking.</p>
+                <div class="device-stats">
+                    <div>
+                        <div class="stat-num">88</div>
+                        <div class="stat-label">Formulations</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">1</div>
+                        <div class="stat-label">Real stack</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">α</div>
+                        <div class="stat-label">Alpha-wave state</div>
+                    </div>
+                </div>
+                <div style="margin-top:20px; padding:16px 20px; background:rgba(196,122,0,0.05); border:1px solid rgba(196,122,0,0.15); border-radius:4px; font-size:13px; line-height:1.7; color:rgba(242,237,228,0.55);">
+                    The dripping smiley signals a $12 party product. The glow ring signals something clinical and confident — a brand that knows what's in it and why it works. The orange stays. The cartoon goes.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="section" id="compare">
+        <div class="label">Side by side</div>
+        <div class="compare-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:140px;"></th>
+                        <th class="l">01 Lucid</th>
+                        <th class="c">02 Comeback</th>
+                        <th class="k">03 Keen</th>
+                        <th class="b">04 Bool</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-h">Positioning</td>
+                        <td>Hydration that makes you sharper</td>
+                        <td>Back to 100. Every time.</td>
+                        <td>The sharp electrolyte</td>
+                        <td>High output hydration</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Visual feel</td>
+                        <td>Warm premium · clean</td>
+                        <td>Bold · athletic · impact</td>
+                        <td>Quiet luxury · editorial</td>
+                        <td>Confident · familiar</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Nootropic signal</td>
+                        <td>★★★★★ Name = the benefit</td>
+                        <td>★★★☆☆ Recovery leads</td>
+                        <td>★★★★☆ Precision implies it</td>
+                        <td>★★★★☆ "Output" implies it</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Premium</td>
+                        <td>★★★★★</td>
+                        <td>★★★☆☆</td>
+                        <td>★★★★★</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Irreverence</td>
+                        <td>★★★☆☆ Quiet confidence</td>
+                        <td>★★★★★ Structural swagger</td>
+                        <td>★★☆☆☆ Understatement</td>
+                        <td>★★★★☆ Names the customer</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">50/50 M/F</td>
+                        <td>★★★★★</td>
+                        <td>★★★☆☆</td>
+                        <td>★★★★★</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Rebrand scope</td>
+                        <td>Full rename</td>
+                        <td>Full rename</td>
+                        <td>Full rename</td>
+                        <td>Rebrand only — keep name</td>
+                    </tr>
+                    <tr>
+                        <td class="row-h">Risk</td>
+                        <td>Trademark check needed</td>
+                        <td>Leans recovery over cognition</td>
+                        <td>Too quiet without strong copy</td>
+                        <td>Existing brand baggage (manageable)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <div class="ring ring-sm"></div>
+            <div class="footer-text">Bool — Brand Directions · June 2026</div>
+        </div>
+        <div class="footer-text">Vault OS · Ground UP</div>
+    </footer>
+
+</div>
+</body>
+</html>
