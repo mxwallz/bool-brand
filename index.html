@@ -3,121 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bool — Brand Directions</title>
+    <title>Bool — Brand Directions 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --o: #C47A00; --bone: #F2EDE4; --black: #0A0A0A; }
+        :root {
+            --o: #C47A00;
+            --bone: #F2EDE4;
+            --black: #0A0A0A;
+            --black2: #0D0D0D;
+            --dim: rgba(242,237,228,0.48);
+            --faint: rgba(242,237,228,0.22);
+        }
         html { scroll-behavior: smooth; }
         body { background: var(--black); color: var(--bone); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
         /* NAV */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; padding: 0 40px; height: 54px;
-            background: rgba(10,10,10,0.96); border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; padding: 0 48px; height: 52px;
+            background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.05);
             backdrop-filter: blur(16px);
         }
-        .nav-brand { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,228,0.3); margin-right: auto; }
+        .nav-brand { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); margin-right: auto; }
         .nav-links { display: flex; gap: 24px; }
-        .nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,228,0.38); text-decoration: none; transition: color 0.2s; }
+        .nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--bone); }
 
         /* GLOW RING */
-        .ring {
-            border-radius: 50%; border: 1.5px solid var(--o); background: transparent; flex-shrink: 0;
-            box-shadow: 0 0 8px rgba(196,122,0,0.9), 0 0 20px rgba(196,122,0,0.4), 0 0 50px rgba(196,122,0,0.15);
+        .ring { border-radius: 50%; border: 1.5px solid var(--o); background: transparent; flex-shrink: 0;
+            box-shadow: 0 0 8px rgba(196,122,0,0.9), 0 0 20px rgba(196,122,0,0.4), 0 0 50px rgba(196,122,0,0.15); }
+        .ring-sm  { width: 20px; height: 20px; }
+        .ring-md  { width: 44px; height: 44px; }
+        .ring-lg  { width: 80px; height: 80px;
+            box-shadow: 0 0 14px rgba(196,122,0,1), 0 0 40px rgba(196,122,0,0.55), 0 0 90px rgba(196,122,0,0.2); }
+
+        /* SLIDE SYSTEM */
+        .page { padding-top: 52px; }
+        .slide { padding: 80px 64px; border-top: 1px solid rgba(255,255,255,0.04); position: relative; overflow: hidden; }
+        .slide-alt { background: var(--black2); }
+        .slide-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 52px; }
+        .slide-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--faint); }
+        .slide-counter { font-size: 11px; letter-spacing: 0.2em; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: rgba(242,237,228,0.14); }
+        .slide-bg-num {
+            position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+            font-size: 220px; font-weight: 900; letter-spacing: -0.06em; line-height: 1;
+            color: rgba(255,255,255,0.022); pointer-events: none; user-select: none;
+            font-family: 'Barlow Condensed', sans-serif;
         }
-        .ring-sm { width: 22px; height: 22px; }
-        .ring-md { width: 44px; height: 44px; }
-        .ring-lg { width: 80px; height: 80px; box-shadow: 0 0 14px rgba(196,122,0,1), 0 0 40px rgba(196,122,0,0.55), 0 0 90px rgba(196,122,0,0.2); }
+        .deck-headline { font-size: clamp(28px, 4vw, 52px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; }
+        .deck-sub { font-size: 13px; color: var(--dim); margin-top: 12px; line-height: 1.7; max-width: 620px; }
 
-        /* LAYOUT */
-        .page { padding-top: 54px; }
-        .section { padding: 72px 56px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .section:first-of-type { border-top: none; }
-        .label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(242,237,228,0.28); }
+        /* COVER */
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 80px 64px; }
+        .cover-title { font-size: clamp(60px, 10vw, 120px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.9; }
+        .cover-title span { color: var(--o); }
+        .cover-sub { font-size: 15px; color: var(--dim); margin-top: 24px; line-height: 1.65; max-width: 480px; }
+        .pill { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.08); color: var(--faint); }
+        .pill-o { border-color: rgba(196,122,0,0.4); color: var(--o); }
 
-        /* HERO */
-        .hero { padding: 80px 40px 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-        .hero-title { font-size: clamp(44px, 7vw, 84px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.96; }
-        .hero-title span { color: var(--o); }
-        .hero-sub { font-size: 15px; color: rgba(242,237,228,0.45); margin-top: 16px; line-height: 1.6; max-width: 480px; }
-        .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
-        .pill { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); color: rgba(242,237,228,0.36); }
-        .pill-o { border-color: rgba(196,122,0,0.45); color: var(--o); }
-
-        /* RENDER IMAGES */
-        .render-block { margin: 0; page-break-inside: avoid; break-inside: avoid; }
-        .render-img {
-            width: 100%; display: block; border-radius: 6px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            padding: 0;
+        /* TLDR */
+        .tldr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .tldr-col-head { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .tldr-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .tldr-item:last-child { border-bottom: none; }
+        .tldr-icon { font-size: 12px; line-height: 1.6; flex-shrink: 0; width: 14px; }
+        .tldr-text { font-size: 13px; line-height: 1.65; color: var(--dim); }
+        .tldr-text strong { color: var(--bone); font-weight: 600; }
+        .thesis {
+            margin-top: 48px; padding: 28px 32px;
+            background: rgba(196,122,0,0.04); border: 1px solid rgba(196,122,0,0.18); border-radius: 4px;
+            display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
         }
-        .render-caption { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 0 4px 8px; }
-        .render-title { font-size: 12px; font-weight: 600; color: rgba(242,237,228,0.7); }
-        .render-desc { font-size: 11px; color: rgba(242,237,228,0.35); margin-left: auto; }
+        .thesis-hl { font-size: clamp(17px, 2vw, 23px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; }
+        .thesis-sub { font-size: 13px; color: var(--dim); margin-top: 8px; line-height: 1.6; }
 
-        .render-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        /* MANDATE */
+        .mandate-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .mandate-card { padding: 28px 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; display: flex; flex-direction: column; gap: 12px; }
+        .mandate-card.not { opacity: 0.52; }
+        .mandate-card.target { border-color: rgba(196,122,0,0.35); background: rgba(196,122,0,0.03); }
+        .mandate-lbl { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+        .mandate-name { font-size: clamp(20px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.025em; }
+        .mandate-desc { font-size: 12px; line-height: 1.7; color: var(--dim); }
+        .mandate-refs { font-size: 11px; color: rgba(242,237,228,0.26); margin-top: auto; }
+        .icp-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+        .icp-card { padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; }
+        .icp-card-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+        .icp-card-body { font-size: 12px; color: var(--dim); line-height: 1.65; }
+
+        /* MARKET MAP */
+        .market-layout { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: start; }
+        .quadrant {
+            position: relative; height: 420px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-left: 28px; margin-bottom: 36px;
+        }
+        .q-ax { position: absolute; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); }
+        .q-ax.xl { bottom: -26px; left: 0; }
+        .q-ax.xr { bottom: -26px; right: 0; }
+        .q-ax.yt { left: -24px; top: 0; writing-mode: vertical-rl; transform: rotate(180deg); }
+        .q-ax.yb { left: -24px; bottom: 0; writing-mode: vertical-rl; transform: rotate(180deg); }
+        .q-gap { position: absolute; background: rgba(196,122,0,0.04); border: 1px dashed rgba(196,122,0,0.22); border-radius: 4px; }
+        .q-gap-lbl { position: absolute; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(196,122,0,0.45); }
+        .q-pt { position: absolute; transform: translate(-50%, -50%); }
+        .q-pt .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(242,237,228,0.28); margin: 0 auto; }
+        .q-pt .lbl { font-size: 10px; color: rgba(242,237,228,0.38); white-space: nowrap; text-align: center; margin-top: 5px; }
+        .q-pt.target .dot { width: 16px; height: 16px; background: transparent; border: 1.5px solid var(--o); border-radius: 50%; box-shadow: 0 0 8px rgba(196,122,0,0.8), 0 0 20px rgba(196,122,0,0.3); }
+        .q-pt.target .lbl { color: var(--o); font-weight: 700; font-size: 11px; }
+        .market-list { display: flex; flex-direction: column; }
+        .market-item { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .market-item:last-child { border-bottom: none; }
+        .market-brand { font-size: 12px; font-weight: 700; color: var(--bone); margin-bottom: 4px; letter-spacing: 0.03em; }
+        .market-brand.gap { color: var(--o); }
+        .market-read { font-size: 12px; color: var(--dim); line-height: 1.55; }
+        .market-read.gap { color: rgba(196,122,0,0.72); }
+        .market-list-head { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 
         /* NAME CARDS */
-        .names-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
-        .name-card {
-            padding: 28px 24px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px;
-            display: flex; flex-direction: column; gap: 10px;
-        }
+        .names-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .name-card { padding: 32px 24px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; display: flex; flex-direction: column; gap: 10px; }
         .name-card-num { font-size: 10px; letter-spacing: 0.2em; color: rgba(242,237,228,0.22); }
-        .name-card-name { font-size: clamp(22px, 3vw, 32px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
-        .name-card-hook { font-size: 12px; color: rgba(242,237,228,0.5); line-height: 1.5; }
+        .name-card-name { font-size: clamp(22px, 3vw, 34px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+        .name-card-hook { font-size: 12px; color: var(--dim); line-height: 1.55; }
         .name-card-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--o); margin-top: auto; }
         .name-card.lucid   { border-top: 2px solid var(--o); }
         .name-card.comeback { border-top: 2px solid #E07500; }
         .name-card.keen    { border-top: 2px solid rgba(196,122,0,0.5); }
-        .name-card.bool    { border-top: 2px solid rgba(196,122,0,0.3); }
+        .name-card.bool    { border-top: 2px solid rgba(196,122,0,0.28); }
 
-        /* DEVICE SECTION */
-        .device { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
-        .device-ring-wrap { display: flex; align-items: center; justify-content: center; height: 200px; position: relative; }
-        .device-ring-wrap::before {
-            content: ''; position: absolute; width: 160px; height: 160px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(196,122,0,0.07) 0%, transparent 70%);
-        }
-        .device-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
-        .device-text p { font-size: 14px; line-height: 1.75; color: rgba(242,237,228,0.55); max-width: 560px; }
-        .device-stats { display: flex; gap: 32px; margin-top: 24px; }
-        .stat-num { font-size: 28px; font-weight: 800; color: var(--o); }
-        .stat-label { font-size: 11px; color: rgba(242,237,228,0.4); margin-top: 2px; }
+        /* RENDERS */
+        .render-block { break-inside: avoid; page-break-inside: avoid; }
+        .render-img { width: 100%; display: block; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .render-cap { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 0 4px 8px; }
+        .render-title { font-size: 12px; font-weight: 600; color: rgba(242,237,228,0.7); }
+        .render-desc { font-size: 11px; color: rgba(242,237,228,0.34); margin-left: auto; }
+        .render-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
-        /* COMPARE TABLE */
-        .compare-wrap { overflow-x: auto; margin-top: 36px; }
-        table { width: 100%; border-collapse: collapse; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; font-size: 12px; }
+        /* COMPARE */
+        .compare-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; border: 1px solid rgba(255,255,255,0.07); font-size: 12px; }
         th { padding: 14px 18px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; background: rgba(255,255,255,0.02); text-align: left; }
         th.l { border-top: 2px solid var(--o); color: var(--o); }
         th.c { border-top: 2px solid #E07500; color: #E07500; }
         th.k { border-top: 2px solid rgba(196,122,0,0.55); color: rgba(196,122,0,0.8); }
-        th.b { border-top: 2px solid rgba(196,122,0,0.3); color: rgba(196,122,0,0.55); }
-        td { padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04); color: rgba(242,237,228,0.6); line-height: 1.5; vertical-align: top; }
-        td.row-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,228,0.25); background: rgba(255,255,255,0.01); }
-
-        /* PRINT */
-        @media print {
-            .nav { display: none; }
-            .page { padding-top: 0; }
-            .section { padding: 48px 56px; }
-            .render-block { page-break-inside: avoid; break-inside: avoid; margin-bottom: 8px; }
-            .render-grid-2 { gap: 24px; }
-            body { background: #0A0A0A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        }
+        th.b { border-top: 2px solid rgba(196,122,0,0.28); color: rgba(196,122,0,0.52); }
+        td { padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04); color: var(--dim); line-height: 1.5; vertical-align: top; }
+        td.row-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,228,0.24); background: rgba(255,255,255,0.01); }
 
         /* FOOTER */
-        .footer { padding: 40px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; align-items: center; }
-        .footer-text { font-size: 11px; letter-spacing: 0.1em; color: rgba(242,237,228,0.16); }
+        .footer { padding: 36px 64px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; align-items: center; }
+        .footer-text { font-size: 11px; letter-spacing: 0.1em; color: rgba(242,237,228,0.15); }
 
-        @media (max-width: 800px) {
+        @media (max-width: 960px) {
+            .slide { padding: 60px 32px; }
+            .cover { padding: 60px 32px; }
+            .footer { padding: 32px; }
+            .tldr-grid, .mandate-grid, .icp-row, .render-grid-2, .market-layout { grid-template-columns: 1fr; }
             .names-grid { grid-template-columns: 1fr 1fr; }
-            .device { grid-template-columns: 1fr; }
-            .render-grid-2 { grid-template-columns: 1fr; }
-            .hero { grid-template-columns: 1fr; }
+            .slide-bg-num { display: none; }
         }
     </style>
 </head>
@@ -126,243 +171,436 @@
 <nav class="nav">
     <span class="nav-brand">Bool — Brand Directions · June 2026</span>
     <div class="nav-links">
+        <a href="#tldr">TL;DR</a>
+        <a href="#mandate">Mandate</a>
+        <a href="#market">Market</a>
         <a href="#names">Names</a>
         <a href="#renders">Renders</a>
-        <a href="#device">Device</a>
         <a href="#compare">Compare</a>
     </div>
 </nav>
 
 <div class="page">
 
-    <!-- HERO -->
-    <div class="hero">
-        <div>
-            <div class="label" style="margin-bottom:16px;">Branding exploration</div>
-            <div class="hero-title"><span>High output</span><br>hydration.</div>
-            <div class="hero-sub">Four naming directions. Three visual territories. The product is genuinely different — nootropic-grade electrolyte, Netherlands formula, 88 iterations. The brand just hasn't caught up yet.</div>
-            <div class="hero-pills">
+<!-- COVER -->
+<div class="cover" id="cover">
+    <div style="position:absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(ellipse at 80% 40%, rgba(196,122,0,0.055) 0%, transparent 60%); pointer-events:none;"></div>
+    <div style="display:flex; align-items:flex-end; gap:60px; flex-wrap:wrap; position:relative;">
+        <div style="flex:1; min-width:300px;">
+            <div style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--faint); margin-bottom:28px;">Brand directions · 4 names · 3 territories</div>
+            <div class="cover-title"><span>High output</span><br>hydration.</div>
+            <div class="cover-sub">The product is genuinely different. 88 formulations. Netherlands lab. Nootropic-grade stack. The brand hasn't caught up yet — this deck is why, and where it should go.</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:24px;">
                 <div class="pill pill-o">High output hydration</div>
                 <div class="pill">Nootropic wedge</div>
-                <div class="pill">50/50 M/F</div>
+                <div class="pill">50/50 M/F · 23–35</div>
                 <div class="pill">Premium · not discount</div>
-                <div class="pill">No mascot</div>
             </div>
         </div>
-        <div style="display:flex; align-items:center; justify-content:center; padding: 20px 40px;">
-            <div style="position:relative; width:100px; height:100px; display:flex; align-items:center; justify-content:center;">
-                <div style="position:absolute; width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, rgba(196,122,0,0.06) 0%, transparent 70%);"></div>
+        <div style="display:flex; align-items:center; justify-content:center; padding:20px 48px;">
+            <div style="position:relative; width:110px; height:110px; display:flex; align-items:center; justify-content:center;">
+                <div style="position:absolute; width:110px; height:110px; border-radius:50%; background:radial-gradient(circle, rgba(196,122,0,0.07) 0%, transparent 70%);"></div>
                 <div class="ring ring-lg"></div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- NAME CARDS -->
-    <div class="section" id="names">
-        <div class="label">Four naming directions</div>
-        <div class="names-grid">
-            <div class="name-card lucid">
-                <div class="name-card-num">01</div>
-                <div class="name-card-name" style="font-family:'Inter';">Lucid</div>
-                <div class="name-card-hook">Hydration that makes you sharper. Every other electrolyte talks about sweat. This one talks about your brain.</div>
-                <div class="name-card-tag">Focus · Clarity · Cognition</div>
+<!-- SLIDE 01: TL;DR -->
+<div class="slide" id="tldr">
+    <div class="slide-bg-num">01</div>
+    <div class="slide-header">
+        <span class="slide-label">The problem</span>
+        <span class="slide-counter">01 / 06</span>
+    </div>
+
+    <div class="deck-headline" style="max-width:700px; margin-bottom:48px;">
+        The packaging says $12 party product.<br>
+        The ICP buys <span style="color:var(--o);">$79/mo AG1.</span>
+    </div>
+
+    <div class="tldr-grid">
+        <div>
+            <div class="tldr-col-head" style="color:rgba(196,122,0,0.5);">What the current brand signals</div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:rgba(242,237,228,0.22);">—</div>
+                <div class="tldr-text"><strong>Cartoon smiley, party palette.</strong> Reads as a TikTok impulse buy — something you grab at a convenience store, not something you put in your gym bag next to your Momentous stack.</div>
             </div>
-            <div class="name-card comeback">
-                <div class="name-card-num">02</div>
-                <div class="name-card-name" style="font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:0.02em; color:#E07500;">Comeback</div>
-                <div class="name-card-hook">"Comeback mode" is already what he calls the PM SKU. This just makes it the whole brand. Back to 100, every time.</div>
-                <div class="name-card-tag">Rebound · Reset · Return</div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:rgba(242,237,228,0.22);">—</div>
+                <div class="tldr-text"><strong>The mascot is doing the work the formula should do.</strong> 88 formulations. Netherlands lab. DHM, L-Theanine, Alpha GPC. That's a $250/mo supplement stack collapsed into one sachet. A dripping cartoon doesn't tell that story.</div>
             </div>
-            <div class="name-card keen">
-                <div class="name-card-num">03</div>
-                <div class="name-card-name" style="font-family:'Plus Jakarta Sans';">keen</div>
-                <div class="name-card-hook">The sharp electrolyte. Most restrained of the four. Works hardest when the copy does the heavy lifting.</div>
-                <div class="name-card-tag">Edge · Precision · Performance</div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:rgba(242,237,228,0.22);">—</div>
+                <div class="tldr-text"><strong>Visual language skews 18–22, male.</strong> The ICP is 50/50 M/F, 23–35, high earner. Female premium buyers don't buy supplements that look like energy drink merch.</div>
             </div>
-            <div class="name-card bool">
-                <div class="name-card-num">04</div>
-                <div class="name-card-name" style="font-family:'Inter';">bool</div>
-                <div class="name-card-hook">Keep the name, overhaul everything else. The @boolsalts handle stays. The smiley goes. "High output hydration."</div>
-                <div class="name-card-tag">Focus · Performance · Hydration</div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:rgba(242,237,228,0.22);">—</div>
+                <div class="tldr-text"><strong>"boolsalts" positions it as a salt product.</strong> The product is a nootropic stack that hydrates. The name buries the lead — and the nootropic angle is the only differentiator no competitor can match.</div>
+            </div>
+        </div>
+        <div>
+            <div class="tldr-col-head" style="color:var(--o);">What the ICP needs to see</div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:var(--o);">+</div>
+                <div class="tldr-text"><strong>Clinical confidence without the white coat.</strong> They read ingredient labels. They know what L-Theanine does. The brand should feel like it knows too — without having to explain everything at every touchpoint.</div>
+            </div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:var(--o);">+</div>
+                <div class="tldr-text"><strong>Premium shelf presence.</strong> This person buys On Running, Whoop, AG1. They make purchase decisions by feel before they read the label. The pack needs to earn the shelf spot on sight.</div>
+            </div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:var(--o);">+</div>
+                <div class="tldr-text"><strong>Gender-neutral visual language.</strong> Not girl-pink or bro-black. Sharp geometry, restrained palette, real typography — something that feels like a precision tool, not a product line.</div>
+            </div>
+            <div class="tldr-item">
+                <div class="tldr-icon" style="color:var(--o);">+</div>
+                <div class="tldr-text"><strong>Own the nootropic angle.</strong> No electrolyte brand owns cognitive hydration. L-Theanine + Alpha GPC → alpha-wave clarity. That's a product story no competitor can claim. It's the entire wedge.</div>
             </div>
         </div>
     </div>
 
-    <!-- RENDERS -->
-    <div class="section" id="renders">
-        <div class="label">Renders</div>
-
-        <!-- Full-width product hero -->
-        <div class="render-block" style="margin-top:36px;">
-            <img class="render-img" src="renders/render-product-hero.png" alt="Product renders — Lucid, Comeback, Keen">
-            <div class="render-caption">
-                <div class="ring ring-sm"></div>
-                <div class="render-title">Product — Lucid / Comeback / Keen</div>
-                <div class="render-desc">Box + stick pack</div>
-            </div>
+    <div class="thesis">
+        <div><div class="ring ring-md"></div></div>
+        <div>
+            <div class="thesis-hl">Keep the irreverence. Kill the cartoon. The personality lives in the voice — not the mascot.</div>
+            <div class="thesis-sub">The founder's wit, the "comeback mode," the obsession with the formula — those all stay. The dripping smiley doesn't represent any of that. "High output hydration" does. That's the rebrand in one sentence.</div>
         </div>
+    </div>
+</div>
 
-        <!-- Solar ring matrix — full width, star of the show -->
-        <div class="render-block" style="margin-top:44px;">
-            <img class="render-img" src="renders/render-solar-matrix.png" alt="Solar ring matrix — A Optics/Focus · B Neurotech/Science · C Luxury/Ritual">
-            <div class="render-caption">
-                <div class="ring ring-sm"></div>
-                <div class="render-title">All four names × three territories</div>
-                <div class="render-desc">A. Optics/Focus · B. Neurotech/Science · C. Luxury/Ritual</div>
-            </div>
+<!-- SLIDE 02: FOUNDER'S MANDATE -->
+<div class="slide slide-alt" id="mandate">
+    <div class="slide-bg-num">02</div>
+    <div class="slide-header">
+        <span class="slide-label">Founder's mandate</span>
+        <span class="slide-counter">02 / 06</span>
+    </div>
+
+    <div style="margin-bottom:40px;">
+        <div class="deck-headline" style="max-width:680px;">"Investment banker. <span style="color:var(--o);">But not too serious.</span><br>Not Equinox."</div>
+        <div class="deck-sub">The brief in a sentence. The brand needs to hold two things at once — and most brands pick one. This is what it looks like to land in the middle.</div>
+    </div>
+
+    <div class="mandate-grid">
+        <div class="mandate-card not">
+            <div class="mandate-lbl" style="color:rgba(242,237,228,0.3);">Not this</div>
+            <div class="mandate-name" style="color:rgba(242,237,228,0.4);">Equinox mode</div>
+            <div class="mandate-desc">Cold prestige. You feel the velvet rope before you open the product. Aspirational from the outside, gatekeeping from the inside. The brand lectures you about your potential and takes itself too seriously to have a personality.</div>
+            <div class="mandate-refs">AG1 late era · SoulCycle · Lululemon-austere · most premium supplement brands</div>
         </div>
-
-        <!-- Execution matrix + progression side by side -->
-        <div class="render-grid-2" style="margin-top:44px;">
-            <div class="render-block">
-                <img class="render-img" src="renders/render-execution-matrix.png" alt="Minimal / Technical / Bold execution matrix">
-                <div class="render-caption">
-                    <div class="render-title">Execution range</div>
-                    <div class="render-desc">Minimal · Technical · Bold</div>
-                </div>
-            </div>
-            <div class="render-block">
-                <img class="render-img" src="renders/render-progression.png" alt="50% / 100% / 200% better progression">
-                <div class="render-caption">
-                    <div class="render-title">Direction spectrum</div>
-                    <div class="render-desc">50% · 100% · 200% better</div>
-                </div>
-            </div>
+        <div class="mandate-card not">
+            <div class="mandate-lbl" style="color:rgba(242,237,228,0.3);">Not this either</div>
+            <div class="mandate-name" style="color:rgba(242,237,228,0.4);">Liquid Death mode</div>
+            <div class="mandate-desc">Maximum irreverence, zero substance. The personality IS the product — works when you're selling water. When the formula has receipts, leading with the bit first is a credibility drain. The joke can't outlast the ingredient panel.</div>
+            <div class="mandate-refs">Liquid Death · Bang Energy · GFuel · Alani Nu</div>
         </div>
-
-        <!-- AB matrix + Lucid formats side by side -->
-        <div class="render-grid-2" style="margin-top:44px;">
-            <div class="render-block">
-                <img class="render-img" src="renders/render-ab-matrix.png" alt="A/B/C territory matrix">
-                <div class="render-caption">
-                    <div class="render-title">Territory matrix</div>
-                    <div class="render-desc">Optics · Neurotech · Luxury</div>
-                </div>
-            </div>
-            <div class="render-block">
-                <img class="render-img" src="renders/render-lucid-formats.png" alt="Lucid packaging system — 10 formats">
-                <div class="render-caption">
-                    <div class="render-title">Lucid packaging system</div>
-                    <div class="render-desc">10 formats — stick to canister</div>
-                </div>
-            </div>
+        <div class="mandate-card target">
+            <div class="mandate-lbl" style="color:var(--o);">The zone</div>
+            <div class="mandate-name" style="color:var(--o);">Confident swagger.</div>
+            <div class="mandate-desc">You know what's in it. You know why it works. You're not going to explain it at every touchpoint — but you're also not above making a joke. Science that doesn't announce itself. Personality that doesn't need to perform.</div>
+            <div class="mandate-refs" style="color:rgba(196,122,0,0.45);">LMNT voice · Erewhon culture · On Running visual language</div>
         </div>
     </div>
 
-    <!-- THE DEVICE -->
-    <div class="section" id="device">
-        <div class="label">The mark</div>
-        <div class="device" style="margin-top:36px;">
-            <div class="device-ring-wrap">
-                <div class="ring ring-lg"></div>
+    <div class="icp-row">
+        <div class="icp-card">
+            <div class="icp-card-lbl">The ICP's gym bag</div>
+            <div class="icp-card-body">On Running shoes. Whoop band. AG1 shaker. Momentous creatine. They'll spend $200/mo on supplements without blinking — if the product earns it visually at shelf. The brand has one shot at that first impression.</div>
+        </div>
+        <div class="icp-card">
+            <div class="icp-card-lbl">Their Friday</div>
+            <div class="icp-card-body">Out 2× a week. Not a club rat, not home by 10. The PM SKU (passionfruit mango + DHM) plays directly into this — go hard without the next-day tax. That's a real use case. A confident brand owns it without winking too hard.</div>
+        </div>
+        <div class="icp-card">
+            <div class="icp-card-lbl">Why they tell people</div>
+            <div class="icp-card-body">They try once on vibe. They reorder because it works. They tell people because it makes them look like they know something others don't. The punchline has to be the formula. Not the mascot.</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 03: MARKET MAP -->
+<div class="slide" id="market">
+    <div class="slide-bg-num">03</div>
+    <div class="slide-header">
+        <span class="slide-label">Market landscape</span>
+        <span class="slide-counter">03 / 06</span>
+    </div>
+
+    <div style="margin-bottom:48px;">
+        <div class="deck-headline" style="max-width:680px;">Nobody owns <span style="color:var(--o);">cognitive hydration.</span><br>The top-right quadrant is empty.</div>
+        <div class="deck-sub">Every serious electrolyte leans clinical-austere. Every personality-forward brand is mass market. Premium + irreverent + cognitive = white space no brand has touched.</div>
+    </div>
+
+    <div class="market-layout">
+        <!-- QUADRANT -->
+        <div>
+            <div class="quadrant">
+                <!-- Axes -->
+                <div class="q-ax xl">Clinical / Austere</div>
+                <div class="q-ax xr">Personality / Irreverent</div>
+                <div class="q-ax yt">Premium</div>
+                <div class="q-ax yb">Mass Market</div>
+
+                <!-- White space zone (top-right) -->
+                <div class="q-gap" style="right:4%; top:4%; width:36%; height:38%;"></div>
+                <div class="q-gap-lbl" style="right:7%; top:8%;">White space</div>
+
+                <!-- Dots: left=0% clinical → 100% personality, top=0% premium → 100% mass -->
+                <!-- LMNT -->
+                <div class="q-pt" style="left:10%; top:9%;"><div class="dot"></div><div class="lbl">LMNT</div></div>
+                <!-- AG1 -->
+                <div class="q-pt" style="left:19%; top:15%;"><div class="dot"></div><div class="lbl">AG1</div></div>
+                <!-- Momentous -->
+                <div class="q-pt" style="left:7%; top:24%;"><div class="dot"></div><div class="lbl">Momentous</div></div>
+                <!-- Thesis (nootropics, not electrolytes) -->
+                <div class="q-pt" style="left:35%; top:18%;"><div class="dot"></div><div class="lbl">Thesis</div></div>
+                <!-- Liquid Death -->
+                <div class="q-pt" style="left:82%; top:32%;"><div class="dot"></div><div class="lbl">Liquid Death</div></div>
+                <!-- Liquid IV -->
+                <div class="q-pt" style="left:30%; top:74%;"><div class="dot"></div><div class="lbl">Liquid IV</div></div>
+                <!-- Nuun -->
+                <div class="q-pt" style="left:16%; top:82%;"><div class="dot"></div><div class="lbl">Nuun</div></div>
+                <!-- Alani Nu -->
+                <div class="q-pt" style="left:70%; top:70%;"><div class="dot"></div><div class="lbl">Alani Nu</div></div>
+
+                <!-- Bool target -->
+                <div class="q-pt target" style="left:66%; top:12%;"><div class="dot"></div><div class="lbl">Bool target</div></div>
             </div>
-            <div class="device-text">
-                <h3>The mark earns its place. It's not decoration.</h3>
-                <p>L-Theanine + Alpha GPC drives alpha-wave brain activity — the calm, locked-in state between anxious and flat. That's what the ring represents: the moment focus lands. Every competitor uses straight lines and white space. A glowing ring tied to actual neuroscience is different. It's also just better looking.</p>
-                <div class="device-stats">
-                    <div>
-                        <div class="stat-num">88</div>
-                        <div class="stat-label">Formulations</div>
-                    </div>
-                    <div>
-                        <div class="stat-num">1</div>
-                        <div class="stat-label">Real stack</div>
-                    </div>
-                    <div>
-                        <div class="stat-num">α</div>
-                        <div class="stat-label">Alpha-wave state</div>
-                    </div>
-                </div>
-                <div style="margin-top:20px; padding:16px 20px; background:rgba(196,122,0,0.05); border:1px solid rgba(196,122,0,0.15); border-radius:4px; font-size:13px; line-height:1.7; color:rgba(242,237,228,0.55);">
-                    The dripping smiley signals a $12 party product. The glow ring signals something clinical and confident — a brand that knows what's in it and why it works. The orange stays. The cartoon goes.
-                </div>
+        </div>
+
+        <!-- Competitive reads -->
+        <div class="market-list">
+            <div class="market-list-head">Competitive reads</div>
+            <div class="market-item">
+                <div class="market-brand">LMNT</div>
+                <div class="market-read">Premium, clinical, austere. Ingredient-first. No cognitive angle. Their ICP overlaps directly — but they're a salt brand, not a brain brand. Bool can be both.</div>
+            </div>
+            <div class="market-item">
+                <div class="market-brand">Liquid IV</div>
+                <div class="market-read">Mass-market glucose hydration. The EL SKU beats LIV on formula via the SGLT1 pathway + full electrolyte stack. LIV wins on shelf presence — that closes when the rebrand happens.</div>
+            </div>
+            <div class="market-item">
+                <div class="market-brand">Thesis / Momentous</div>
+                <div class="market-read">Premium nootropics and sports nutrition. Their buyers are exactly bool's ICP. Nobody in that space is also a hydration brand. This is the crossover nobody has done.</div>
+            </div>
+            <div class="market-item">
+                <div class="market-brand gap">The gap</div>
+                <div class="market-read gap">Premium + personality + cognitive hydration. No brand owns alpha-wave focus, 3pm crash recovery, and hangover science simultaneously. The formula is already there. The brand needs to say it.</div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- COMPARE -->
-    <div class="section" id="compare">
-        <div class="label">Side by side</div>
-        <div class="compare-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width:140px;"></th>
-                        <th class="l">01 Lucid</th>
-                        <th class="c">02 Comeback</th>
-                        <th class="k">03 Keen</th>
-                        <th class="b">04 Bool</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="row-h">Positioning</td>
-                        <td>Hydration that makes you sharper</td>
-                        <td>Back to 100. Every time.</td>
-                        <td>The sharp electrolyte</td>
-                        <td>High output hydration</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Visual feel</td>
-                        <td>Warm premium · clean</td>
-                        <td>Bold · athletic · impact</td>
-                        <td>Quiet luxury · editorial</td>
-                        <td>Confident · familiar</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Nootropic signal</td>
-                        <td>★★★★★ Name = the benefit</td>
-                        <td>★★★☆☆ Recovery leads</td>
-                        <td>★★★★☆ Precision implies it</td>
-                        <td>★★★★☆ "Output" implies it</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Premium</td>
-                        <td>★★★★★</td>
-                        <td>★★★☆☆</td>
-                        <td>★★★★★</td>
-                        <td>★★★★☆</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Irreverence</td>
-                        <td>★★★☆☆ Quiet confidence</td>
-                        <td>★★★★★ Structural swagger</td>
-                        <td>★★☆☆☆ Understatement</td>
-                        <td>★★★★☆ Names the customer</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">50/50 M/F</td>
-                        <td>★★★★★</td>
-                        <td>★★★☆☆</td>
-                        <td>★★★★★</td>
-                        <td>★★★★☆</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Rebrand scope</td>
-                        <td>Full rename</td>
-                        <td>Full rename</td>
-                        <td>Full rename</td>
-                        <td>Rebrand only — keep name</td>
-                    </tr>
-                    <tr>
-                        <td class="row-h">Risk</td>
-                        <td>Trademark check needed</td>
-                        <td>Leans recovery over cognition</td>
-                        <td>Too quiet without strong copy</td>
-                        <td>Existing brand baggage (manageable)</td>
-                    </tr>
-                </tbody>
-            </table>
+<!-- SLIDE 04: FOUR DIRECTIONS -->
+<div class="slide slide-alt" id="names">
+    <div class="slide-bg-num">04</div>
+    <div class="slide-header">
+        <span class="slide-label">Four naming directions</span>
+        <span class="slide-counter">04 / 06</span>
+    </div>
+    <div class="deck-sub" style="margin-bottom:36px;">Each direction hits the mandate differently. Lucid and Keen clear the "investment banker not Equinox" bar cleanly. Comeback leans into recovery. Bool is the keep-the-name, overhaul-everything option.</div>
+    <div class="names-grid">
+        <div class="name-card lucid">
+            <div class="name-card-num">01</div>
+            <div class="name-card-name" style="font-family:'Inter';">Lucid</div>
+            <div class="name-card-hook">Hydration that makes you sharper. Every other electrolyte talks about sweat. This one talks about your brain. The name is the benefit.</div>
+            <div class="name-card-tag">Focus · Clarity · Cognition</div>
+        </div>
+        <div class="name-card comeback">
+            <div class="name-card-num">02</div>
+            <div class="name-card-name" style="font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:0.02em; color:#E07500;">Comeback</div>
+            <div class="name-card-hook">"Comeback mode" is already what the founder calls the PM SKU. This makes it the whole brand. Back to 100, every time — morning after or 3pm crash.</div>
+            <div class="name-card-tag">Rebound · Reset · Return</div>
+        </div>
+        <div class="name-card keen">
+            <div class="name-card-num">03</div>
+            <div class="name-card-name" style="font-family:'Plus Jakarta Sans';">keen</div>
+            <div class="name-card-hook">The sharp electrolyte. Most restrained of the four. Earns its premium by saying almost nothing. Works hardest when the copy does the heavy lifting.</div>
+            <div class="name-card-tag">Edge · Precision · Performance</div>
+        </div>
+        <div class="name-card bool">
+            <div class="name-card-num">04</div>
+            <div class="name-card-name" style="font-family:'Inter';">bool</div>
+            <div class="name-card-hook">Keep the name, overhaul everything else. The @boolsalts handle stays. The cartoon goes. "High output hydration" does the repositioning work without a rename.</div>
+            <div class="name-card-tag">High output · Rebrand in place</div>
         </div>
     </div>
+</div>
 
-    <footer class="footer">
-        <div style="display:flex; align-items:center; gap:12px;">
+<!-- SLIDE 05: RENDERS -->
+<div class="slide" id="renders">
+    <div class="slide-bg-num">05</div>
+    <div class="slide-header">
+        <span class="slide-label">Visual directions</span>
+        <span class="slide-counter">05 / 06</span>
+    </div>
+
+    <div class="render-block">
+        <img class="render-img" src="renders/render-product-hero.png" alt="Product renders — Lucid, Comeback, Keen">
+        <div class="render-cap">
             <div class="ring ring-sm"></div>
-            <div class="footer-text">Bool — Brand Directions · June 2026</div>
+            <div class="render-title">Product — Lucid / Comeback / Keen</div>
+            <div class="render-desc">Box + stick pack</div>
         </div>
-        <div class="footer-text">Vault OS · Ground UP</div>
-    </footer>
+    </div>
+
+    <div class="render-block" style="margin-top:40px;">
+        <img class="render-img" src="renders/render-solar-matrix.png" alt="Solar ring matrix — all four names × three territories">
+        <div class="render-cap">
+            <div class="ring ring-sm"></div>
+            <div class="render-title">All four names × three territories</div>
+            <div class="render-desc">A. Optics/Focus · B. Neurotech/Science · C. Luxury/Ritual</div>
+        </div>
+    </div>
+
+    <div class="render-grid-2" style="margin-top:40px;">
+        <div class="render-block">
+            <img class="render-img" src="renders/render-execution-matrix.png" alt="Execution range">
+            <div class="render-cap">
+                <div class="render-title">Execution range</div>
+                <div class="render-desc">Minimal · Technical · Bold</div>
+            </div>
+        </div>
+        <div class="render-block">
+            <img class="render-img" src="renders/render-progression.png" alt="Direction spectrum">
+            <div class="render-cap">
+                <div class="render-title">Direction spectrum</div>
+                <div class="render-desc">50% · 100% · 200% better</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="render-grid-2" style="margin-top:40px;">
+        <div class="render-block">
+            <img class="render-img" src="renders/render-ab-matrix.png" alt="Territory matrix">
+            <div class="render-cap">
+                <div class="render-title">Territory matrix</div>
+                <div class="render-desc">Optics · Neurotech · Luxury</div>
+            </div>
+        </div>
+        <div class="render-block">
+            <img class="render-img" src="renders/render-lucid-formats.png" alt="Lucid packaging system">
+            <div class="render-cap">
+                <div class="render-title">Lucid packaging system</div>
+                <div class="render-desc">10 formats — stick to canister</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 06: COMPARE -->
+<div class="slide slide-alt" id="compare">
+    <div class="slide-bg-num">06</div>
+    <div class="slide-header">
+        <span class="slide-label">Side by side</span>
+        <span class="slide-counter">06 / 06</span>
+    </div>
+
+    <!-- The mark — compact -->
+    <div style="display:grid; grid-template-columns:100px 1fr; gap:32px; align-items:center; margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="display:flex; align-items:center; justify-content:center; height:100px; position:relative;">
+            <div style="position:absolute; width:96px; height:96px; border-radius:50%; background:radial-gradient(circle, rgba(196,122,0,0.07) 0%, transparent 70%);"></div>
+            <div class="ring ring-lg"></div>
+        </div>
+        <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:10px; letter-spacing:-0.01em;">The mark earns its place. It's not decoration.</div>
+            <div style="font-size:13px; line-height:1.75; color:var(--dim); max-width:580px;">L-Theanine + Alpha GPC drives alpha-wave brain activity — the locked-in state between anxious and flat. The ring represents that moment. The dripping smiley signals a $12 party product. A glowing ring tied to actual neuroscience signals something else entirely. The orange stays. The cartoon goes.</div>
+            <div style="display:flex; gap:32px; margin-top:20px;">
+                <div><div style="font-size:24px; font-weight:800; color:var(--o);">88</div><div style="font-size:11px; color:rgba(242,237,228,0.4); margin-top:2px;">Formulations</div></div>
+                <div><div style="font-size:24px; font-weight:800; color:var(--o);">3yr</div><div style="font-size:11px; color:rgba(242,237,228,0.4); margin-top:2px;">R&D in Netherlands</div></div>
+                <div><div style="font-size:24px; font-weight:800; color:var(--o);">α</div><div style="font-size:11px; color:rgba(242,237,228,0.4); margin-top:2px;">Alpha-wave state</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="compare-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:148px;"></th>
+                    <th class="l">01 Lucid</th>
+                    <th class="c">02 Comeback</th>
+                    <th class="k">03 Keen</th>
+                    <th class="b">04 Bool</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-h">Positioning</td>
+                    <td>Hydration that makes you sharper</td>
+                    <td>Back to 100. Every time.</td>
+                    <td>The sharp electrolyte</td>
+                    <td>High output hydration</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Visual feel</td>
+                    <td>Warm premium · clean · warm gold</td>
+                    <td>Bold · athletic · impact</td>
+                    <td>Quiet luxury · editorial</td>
+                    <td>Confident · familiar</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Nootropic signal</td>
+                    <td>★★★★★ Name = the benefit</td>
+                    <td>★★★☆☆ Recovery leads</td>
+                    <td>★★★★☆ Precision implies it</td>
+                    <td>★★★★☆ "Output" implies it</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Premium</td>
+                    <td>★★★★★</td>
+                    <td>★★★☆☆</td>
+                    <td>★★★★★</td>
+                    <td>★★★★☆</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Irreverence</td>
+                    <td>★★★☆☆ Quiet confidence</td>
+                    <td>★★★★★ Structural swagger</td>
+                    <td>★★☆☆☆ Understatement</td>
+                    <td>★★★★☆ Names the outcome</td>
+                </tr>
+                <tr>
+                    <td class="row-h">IB — not Equinox</td>
+                    <td>★★★★★ Hits it clean</td>
+                    <td>★★★☆☆ Slightly athletic</td>
+                    <td>★★★★★ Quiet confidence</td>
+                    <td>★★★★☆ After rebrand</td>
+                </tr>
+                <tr>
+                    <td class="row-h">50/50 M/F</td>
+                    <td>★★★★★</td>
+                    <td>★★★☆☆</td>
+                    <td>★★★★★</td>
+                    <td>★★★★☆</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Rebrand scope</td>
+                    <td>Full rename</td>
+                    <td>Full rename</td>
+                    <td>Full rename</td>
+                    <td>Rebrand only — keep name</td>
+                </tr>
+                <tr>
+                    <td class="row-h">Risk</td>
+                    <td>Trademark check needed</td>
+                    <td>Leans recovery over cognition</td>
+                    <td>Too quiet without strong copy</td>
+                    <td>Existing brand baggage (manageable)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="footer">
+    <div style="display:flex; align-items:center; gap:12px;">
+        <div class="ring ring-sm"></div>
+        <div class="footer-text">Bool — Brand Directions · June 2026</div>
+    </div>
+    <div class="footer-text">Vault OS · Ground UP</div>
+</footer>
 
 </div>
 </body>
